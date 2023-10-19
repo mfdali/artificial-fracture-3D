@@ -1,11 +1,11 @@
-# artificial-fracture-3D
-Python scripts to simulate flow through thin atificial fractures in 3D
+# Artificial fracture 3D
+Python scripts to create and simulate flow through thin artificial fractures in 3D
 
 # 1st
-  Create mesh
-  fracture_surface_3dmesh.py
-  Create desirable 3D geometry using Gmsh via Python API
-  In this case, it was constructed an artificial fracture combining an harmonic surface at top with 1 milimiter of average height and flat walls to close the cuboid
+  Create mesh \\
+  fracture_surface_3dmesh.py \\
+  Create desirable 3D geometry using Gmsh via Python API \\
+  In this case, it was constructed an artificial fracture combining an harmonic surface at top with 1 milimiter of average height and flat walls to close the cuboid \\
   
 # 2nd
   Convert mesh from .msh to .xdmf, .h5
