@@ -1,0 +1,7 @@
+gmsh==4.11.1
+h5py==2.10.0
+meshio==4.4.6
+fenics_dolfin==2019.2.0.dev0
+matplotlib==3.5.1
+numpy==1.18.5
+
