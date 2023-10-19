@@ -2,13 +2,10 @@
 Python scripts to create and simulate flow through thin artificial fractures in 3D
 
 <ul type='disc'>
-
-  
-
 <li> 1st </li>
-  **Create mesh**
+  - Create mesh
   
-  '''fracture_surface_3dmesh.py''' 
+  ```fracture_surface_3dmesh.py```
   
   Create desirable 3D geometry using Gmsh via Python API 
   
@@ -16,16 +13,16 @@ Python scripts to create and simulate flow through thin artificial fractures in 
   
   
 <li> 2nd </li>
-  **Convert mesh from .msh to .xdmf, .h5**
+  - Convert mesh from .msh to .xdmf, .h5
   
-  '''convert-meshio3d.py'''
+  ```convert-meshio3d.py```
   
   Use meshio lib to convert Gmsh file into readable mesh for FEniCS
   
 <li> 3rd </li>
-  **Solve flow**
+  - Solve flow
   
-  '''stokes.py'''
+  ```stokes.py```
   
   Code to solve Stokes flow with FEniCS package through an artificial fracture 
   
