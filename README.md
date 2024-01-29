@@ -1,7 +1,7 @@
 # Artificial fracture 3D
 
 Python scripts to create and simulate flow through thin artificial fractures in 3D.
-The goal of this project is to simulate flow through thin 3d box, $h << (x & y)$. These geometries mimic the behaviour of fractures in oil reservoirs.
+The goal of this project is to simulate flow through thin 3d box, $h << (x \& y)$. These geometries mimic the behaviour of fractures in oil reservoirs.
 We want to compare computational results for 3 different surface arrangements. For this work, we created 3 types of surface: flat, harmonic and harmonic slope.
 Then, one flat surface is replaced by a harmonic one and after a slope is added.
 
