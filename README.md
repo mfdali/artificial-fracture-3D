@@ -55,6 +55,17 @@ Then, one flat surface is replaced by a harmonic one and after a slope is added.
   ### Problem
   
   ![Boundary conditions](https://github.com/mfdali/artificial-fracture-3D/blob/main/2D_problem.png)
+
+  ### Velocity fields
+  
+  #### Flat surface
+  ![box velocity](https://github.com/mfdali/artificial-fracture-3D/blob/main/thin_box_1mm_meshsize_0003_u_yclip_rgb.png)
+
+  #### Harmonic surface
+  ![periodic velocity](https://github.com/mfdali/artificial-fracture-3D/blob/main/x2_reducedv3_1mm_meshsize_00015_u_yclip_rgb.png)
+
+  #### Surface slope
+  ![slope velocity](https://github.com/mfdali/artificial-fracture-3D/blob/main/x2_slopev1_10N_2mm_meshsize_0002_u_yclip_rgb.png)
   
   4. ## Mesh test
      
