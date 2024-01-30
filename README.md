@@ -23,7 +23,7 @@ Then, one flat surface is replaced by a harmonic one and after a slope is added.
   In this case, it was constructed an artificial fracture combining an harmonic surface at top with 1 milimiter of average height and flat walls to close the cuboid.
 
   ### Flat surface
-  ![Box](https://github.com/mfdali/artificial-fracture-3D/blob/main/thin_box_2mm_meshsize_0007_mesh.png)
+  ![Box](https://github.com/mfdali/artificial-fracture-3D/blob/main/thin_box_1mm_meshsize_0003_mesh.png)
 
   ### Harmonic surface
   ![Harmonic pertubation](https://github.com/mfdali/artificial-fracture-3D/blob/main/x2_reducedv3_1mm_meshsize_0004_mesh.png)
@@ -40,10 +40,10 @@ Then, one flat surface is replaced by a harmonic one and after a slope is added.
   ### Boundaries
   
   Harmonic
-  ![Harmonic pertubation](https://github.com/mfdali/artificial-fracture-3D/blob/main/x2_reducedv3_1mm_meshsize_boundaries.png)
+  ![Harmonic pertubation](https://github.com/mfdali/artificial-fracture-3D/blob/main/x2_reducedv3_1mm_meshsize_boundaries_white.png)
   
   Slope
-  ![Harmonic slope](https://github.com/mfdali/artificial-fracture-3D/blob/main/x2_slopev1_10N_2mm_boundaries.png)
+  ![Harmonic slope](https://github.com/mfdali/artificial-fracture-3D/blob/main/x2_slopev1_10N_2mm_boundaries_white.png)
   
 
   3. ## Solve flow
@@ -54,7 +54,7 @@ Then, one flat surface is replaced by a harmonic one and after a slope is added.
 
   ### Problem
   
-  ![Boundary conditions](https://github.com/mfdali/artificial-fracture-3D/blob/main/boundary_conditions.png)
+  ![Boundary conditions](https://github.com/mfdali/artificial-fracture-3D/blob/main/2D_problem.png)
   
   4. ## Mesh test
      
