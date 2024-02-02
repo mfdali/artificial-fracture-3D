@@ -100,6 +100,33 @@ ds = Measure('ds',domain=mesh, subdomain_data = boundaries)
 file = File(output_folder + case_filename + "_boundaries.pvd")
 file << boundaries
 
+##############################################################
+# Get surface coordinates
+
+It_mesh = SubsetIterator(boundaries, 1)
+# Save boundary coordinates
+# open file
+coords_file = open(output_folder + case_filename + "_surface_coordinates.txt", "a")
+
+for c in It_mesh:
+    # coordinates
+    coords_file.write("%2.8e,%2.8e,%2.8e\n" % (c.midpoint().x(), c.midpoint().y(), c.midpoint().z()))
+
+# close file
+coords_file.close()
+
+# open file
+vertices_file = open(output_folder + case_filename + "_surface_coordinates_vertices.txt", "a")
+
+
+for f in It_mesh:
+    for v in vertices(f):
+        # coordinates
+        vertices_file.write("%2.8e,%2.8e,%2.8e\n" % (v.midpoint().x(), v.midpoint().y(), v.midpoint().z()))
+
+# close file
+vertices_file.close()
+
 ################################
 # Fluid properties
 
