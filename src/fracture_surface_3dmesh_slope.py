@@ -202,10 +202,17 @@ def create_mesh(set_meshsize, surface_mode, metrics_filename, case_name, print_t
     # feature.
 
     # Add corner points
-    p1 = gmsh.model.geo.addPoint(0, 0, 0,lcmax)
-    p2 = gmsh.model.geo.addPoint(1/20, 0, 0,lcmin)
-    p3 = gmsh.model.geo.addPoint(1/20, 1/50, 0,lcmin)
-    p4 = gmsh.model.geo.addPoint(0, 1/50, 0,lcmax)
+    if surface_type == 'slope':
+        p1 = gmsh.model.geo.addPoint(0, 0, 0,lcmax)
+        p2 = gmsh.model.geo.addPoint(1/20, 0, 0,lcmin)
+        p3 = gmsh.model.geo.addPoint(1/20, 1/50, 0,lcmin)
+        p4 = gmsh.model.geo.addPoint(0, 1/50, 0,lcmax)
+
+    if surface_type == 'eggshell':
+        p1 = gmsh.model.geo.addPoint(0, 0, 0)
+        p2 = gmsh.model.geo.addPoint(1/20, 0, 0)
+        p3 = gmsh.model.geo.addPoint(1/20, 1/50, 0)
+        p4 = gmsh.model.geo.addPoint(0, 1/50, 0)
 
     # Connect these points
     c1 = gmsh.model.geo.addLine(p1, p2)
@@ -256,46 +263,51 @@ def create_mesh(set_meshsize, surface_mode, metrics_filename, case_name, print_t
     gmsh.model.addPhysicalGroup(3, [v1], tag=0)
     gmsh.model.setPhysicalName(3, 2, "volume")
 
-    # Say we would like to obtain mesh elements with size lc/30 near curve 2 and
-    # point 5, and size lc elsewhere. To achieve this, we can use two fields:
-    # "Distance", and "Threshold". We first define a Distance field (`Field[1]') on
-    # points 5 and on curve 2. This field returns the distance to point 5 and to
-    # (100 equidistant points on) curve 2.
-    gmsh.model.mesh.field.add("Distance", 1)
-    gmsh.model.mesh.field.setNumbers(1, "PointsList", [2,3])
-    gmsh.model.mesh.field.setNumbers(1, "CurvesList", [c2])
-    gmsh.model.mesh.field.setNumber(1, "Sampling", 100)
+    if surface_type == 'slope':
+        # Say we would like to obtain mesh elements with size lc/30 near curve 2 and
+        # point 5, and size lc elsewhere. To achieve this, we can use two fields:
+        # "Distance", and "Threshold". We first define a Distance field (`Field[1]') on
+        # points 5 and on curve 2. This field returns the distance to point 5 and to
+        # (100 equidistant points on) curve 2.
+        gmsh.model.mesh.field.add("Distance", 1)
+        gmsh.model.mesh.field.setNumbers(1, "PointsList", [2,3])
+        gmsh.model.mesh.field.setNumbers(1, "CurvesList", [c2])
+        gmsh.model.mesh.field.setNumber(1, "Sampling", 100)
 
-    # We then define a `Threshold' field, which uses the return value of the
-    # `Distance' field 1 in order to define a simple change in element size
-    # depending on the computed distances
-    #
-    # SizeMax -                     /------------------
-    #                              /
-    #                             /
-    #                            /
-    # SizeMin -o----------------/
-    #          |                |    |
-    #        Point         DistMin  DistMax
+        # We then define a `Threshold' field, which uses the return value of the
+        # `Distance' field 1 in order to define a simple change in element size
+        # depending on the computed distances
+        #
+        # SizeMax -                     /------------------
+        #                              /
+        #                             /
+        #                            /
+        # SizeMin -o----------------/
+        #          |                |    |
+        #        Point         DistMin  DistMax
 
-    gmsh.model.mesh.field.add("Threshold", 2)
-    gmsh.model.mesh.field.setNumber(2, "InField", 1)
-    gmsh.model.mesh.field.setNumber(2, "SizeMin", lc / 1.5)
-    gmsh.model.mesh.field.setNumber(2, "SizeMax", lcmax)
-    gmsh.model.mesh.field.setNumber(2, "DistMin", 0.002)
-    gmsh.model.mesh.field.setNumber(2, "DistMax", 0.03)
+        gmsh.model.mesh.field.add("Threshold", 2)
+        gmsh.model.mesh.field.setNumber(2, "InField", 1)
+        gmsh.model.mesh.field.setNumber(2, "SizeMin", lc / 1.5)
+        gmsh.model.mesh.field.setNumber(2, "SizeMax", lcmax)
+        gmsh.model.mesh.field.setNumber(2, "DistMin", 0.002)
+        gmsh.model.mesh.field.setNumber(2, "DistMax", 0.03)
 
-    # Let's use the minimum of all the fields as the mesh size field:
-    gmsh.model.mesh.field.add("Min", 7)
-    gmsh.model.mesh.field.setNumbers(7, "FieldsList", [2])
+        # Let's use the minimum of all the fields as the mesh size field:
+        gmsh.model.mesh.field.add("Min", 7)
+        gmsh.model.mesh.field.setNumbers(7, "FieldsList", [2])
 
-    gmsh.model.mesh.field.setAsBackgroundMesh(7)
+        gmsh.model.mesh.field.setAsBackgroundMesh(7)
 
     # The API also allows to set a global mesh size callback, which is called each
     # time the mesh size is queried
     def meshSizeCallback(dim, tag, x, y, z, lc):
         #return min(lc, 0.002 * x + 0.001)
         return min(lc, 0.0002 * x + 0.001)
+
+    if surface_type == 'eggshell':
+        gmsh.option.setNumber('Mesh.MeshSizeMin', min_meshsize)
+        gmsh.option.setNumber('Mesh.MeshSizeMax', max_meshsize)
 
     #gmsh.model.mesh.setSizeCallback(meshSizeCallback)
 
