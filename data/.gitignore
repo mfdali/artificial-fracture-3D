@@ -1,0 +1,5 @@
+# ignores all post-processing files
+*.vtk
+*.vtu
+*.pvd
+*.png
