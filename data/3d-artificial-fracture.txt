@@ -1,0 +1,11 @@
+Case,Equation,Av_Height,np.min,np.max,Inflow,Outflow,%Deviation,K_eq,Exec_time,Area,Height_3,Av_lub,cells,dof,time
+Case,Equation,Av_Height,np.min,np.max,Inflow,Outflow,%Deviation,K_eq,Exec_time,Area,Height_3,Av_lub,cells,dof,time
+3d-artificial-fracture2.5D-eggshell-10N_facets,3d-artificial-fracture2.5D-eggshell-10N_facets,0.00100002,9.000500e-04,1.099873e-03,0.002248036916,0.002248036916,-8.573159e-11,8.0287e-08,37.1908,0.001,1.02769e+06,0.000990935,40602,184222,37.1908
+Case,Equation,Av_Height,np.min,np.max,Inflow,Outflow,%Deviation,K_eq,Exec_time,Area,Height_3,Av_lub,cells,dof,time
+3d-artificial-fracture2.5D-eggshell-10N_facets,3d-artificial-fracture2.5D-eggshell-10N_facets,0.00100002,9.000500e-04,1.099873e-03,0.002248036916,0.002248036916,-8.573159e-11,8.0287e-08,20.6407,0.001,1.02769e+06,0.000990935,40602,184222,20.6407
+Case,Equation,Av_Height,np.min,np.max,Inflow,Outflow,%Deviation,K_eq,Exec_time,Area,Height_3,Av_lub,cells,dof,time
+Case,Equation,Av_Height,np.min,np.max,Inflow,Outflow,%Deviation,K_eq,Exec_time,Area,Height_3,Av_lub,cells,dof,time
+Case,Equation,Av_Height,np.min,np.max,Inflow,Outflow,%Deviation,K_eq,Exec_time,Area,Height_3,Av_lub,cells,dof,time
+3d-artificial-fracture2.5D-eggshell-10N_facets,3d-artificial-fracture2.5D-eggshell-10N_facets,0.001,9.032277e-04,1.097296e-03,0.00224366863,0.00224366863,-2.111704e-10,8.0313e-08,139.159,0.000994525,1.02013e+06,0.000991562,200000,903503,139.159
+Case,Equation,Av_Height,np.min,np.max,Inflow,Outflow,%Deviation,K_eq,Exec_time,Area,Height_3,Av_lub,cells,dof,time
+3d-artificial-fracture2.5D-eggshell-10N_facets,3d-artificial-fracture2.5D-eggshell-10N_facets,0.00100001,9.032277e-04,1.097296e-03,0.002243514081,0.002243514081,-6.940397e-10,8.03074e-08,2845.36,0.000994525,1.02027e+06,0.000991517,2.21445e+06,9.97668e+06,2845.36

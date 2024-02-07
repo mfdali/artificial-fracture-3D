@@ -48,8 +48,8 @@ class MeshHeight(UserExpression):
         
     def set_h_values(self,X,Y,Z):
         self.X, self.Y, self.Z = X, Y, Z
-        self.interpolator = LinearNDInterpolator((self.X, self.Y), self.Z)
-        #self.interpolator = NearestNDInterpolator((self.X, self.Y), self.Z)
+        #self.interpolator = LinearNDInterpolator((self.X, self.Y), self.Z)
+        self.interpolator = NearestNDInterpolator((self.X, self.Y), self.Z)
 
     def eval(self, values, x):
 
@@ -380,9 +380,12 @@ def _geometry_params(aperture):
 '''Artificial'''
 def slope(output_folder):
     
-    aperture = output_folder + 'slope10N_coords.csv'
+    #aperture = output_folder + 'slope10N_coords.csv'
+    #case = ['2.5D-slope-10N']
+    aperture = output_folder + 'x2_slopev1_10N_2mm_meshsize_0003_surface_coordinates.txt'
+    case = ['2.5D-slope-10N_facets']
     project_name = '3d-artificial-fracture'
-    case = ['2.5D-slope-10N']
+
     h_ = [0]
 
     x, y, z = load_data(aperture) 
@@ -402,9 +405,11 @@ def slope(output_folder):
 
 def eggshell(output_folder):
     
-    aperture = 'eggshell10N_coords.csv'
+    #aperture = output_folder + 'eggshell10N_coords.csv'
+    #case = ['2.5D-eggshell-10N']
+    aperture = output_folder + 'x2_reducedv3_1mm_meshsize_0002_surface_coordinates.txt'
     project_name = '3d-artificial-fracture'
-    case = ['2.5D-eggshell-10N']
+    case = ['2.5D-eggshell-10N_facets']
     h_ = [0]
 
     x_,y_,xah, yah, zh_ =_geometry_params(aperture)
@@ -420,7 +425,8 @@ def box(output_folder):
     
     return x_,y_,xah, yah, zh_, aperture, project_name, case, h_
 
-output_folder = 'fracture_2D/'
+output_folder = 'data/'
+min_dist = 3E-5
 
 x_,y_,xah, yah, zh_, aperture, project_name, case, h_ = eggshell(output_folder)
 #x_,y_,xah, yah, zh_, aperture, project_name, case, h_ = slope(output_folder)
@@ -430,6 +436,12 @@ x_,y_,xah, yah, zh_, aperture, project_name, case, h_ = eggshell(output_folder)
 x_dist = get_distance(xah, yah)
 y_dist = get_distance(yah, xah)
 print(x_dist,y_dist)
+if (x_dist and y_dist) < min_dist:
+    if x_dist < min_dist:
+        x_dist = min_dist
+    if y_dist < min_dist:
+        y_dist = min_dist
+    print(x_dist,y_dist)
 
 print_to_file = open(output_folder + project_name + ".txt", "a")
 print_to_file.write("Case,Equation,Av_Height,np.min,np.max,Inflow,Outflow,%Deviation,K_eq,Exec_time,Area,Height_3,Av_lub,cells,dof,time\n")
