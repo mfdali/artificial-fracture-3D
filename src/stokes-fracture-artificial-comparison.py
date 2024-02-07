@@ -48,8 +48,8 @@ class MeshHeight(UserExpression):
         
     def set_h_values(self,X,Y,Z):
         self.X, self.Y, self.Z = X, Y, Z
-        self.interpolator = LinearNDInterpolator((self.X, self.Y), self.Z)
-        #self.interpolator = NearestNDInterpolator((self.X, self.Y), self.Z)
+        #self.interpolator = LinearNDInterpolator((self.X, self.Y), self.Z)
+        self.interpolator = NearestNDInterpolator((self.X, self.Y), self.Z)
 
     def eval(self, values, x):
 
@@ -420,7 +420,7 @@ def box(output_folder):
     
     return x_,y_,xah, yah, zh_, aperture, project_name, case, h_
 
-output_folder = 'fracture_2D/'
+output_folder = 'data/'
 
 x_,y_,xah, yah, zh_, aperture, project_name, case, h_ = eggshell(output_folder)
 #x_,y_,xah, yah, zh_, aperture, project_name, case, h_ = slope(output_folder)

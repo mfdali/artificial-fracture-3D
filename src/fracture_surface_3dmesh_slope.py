@@ -54,7 +54,7 @@ def eggshell(min_meshsize):
     # Define name of the surface type
     surface_type = 'eggshell'
     # Set the name of the msh file
-    mesh_name = "x2_reducedv2_1mm_meshsize_" + str(min_meshsize)[2:]
+    mesh_name = "x2_reducedv3_1mm_meshsize_" + str(min_meshsize)[2:]
     # Set the surface equation
     surface_equation = "1E-4 * math.sin(10 * float(i+j) / 10*N) + 0.001"
     
@@ -337,7 +337,7 @@ def create_mesh(set_meshsize, surface_mode, metrics_filename, case_name, print_t
     gmsh.option.setNumber("Mesh.Algorithm", 5)
     gmsh.model.mesh.optimize("Netgen")
     gmsh.model.mesh.generate(3)
-    gmsh.write(mesh_name + '.msh')
+    gmsh.write(output_folder + mesh_name + '.msh')
 
     gmsh.model.geo.synchronize()
 
@@ -345,7 +345,7 @@ def create_mesh(set_meshsize, surface_mode, metrics_filename, case_name, print_t
 
     # Save to file parameters of mesh creation
     if print_to_file:
-        get_metrics_file = open(metrics_filename + ".txt", "a")
+        get_metrics_file = open(output_folder + metrics_filename + ".txt", "a")
         # Print header
         if print_header:
             get_metrics_file.write("Case,Equation,mesh_name,min_meshsize,max_meshsize,min,max,Av_Height,kf\n")
@@ -357,10 +357,11 @@ def create_mesh(set_meshsize, surface_mode, metrics_filename, case_name, print_t
     grid_coords = array_coords.reshape((int(len(coords)/3)),3)
     
     # Save surface coordinates to file
-    np.savetxt(surface_type + '10N_coords.csv', grid_coords , fmt="%.8e", delimiter=",")  
+    np.savetxt(output_folder + surface_type + '10N_coords.csv', grid_coords , fmt="%.8e", delimiter=",")  
 
 ############ Main ############
 
+output_folder = "data/"
 metrics_filename = "gmsh_terrain_surface2" # Filename to write parameters of mesh creation
 print_to_file = True
 print_header = True

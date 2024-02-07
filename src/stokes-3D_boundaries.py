@@ -28,7 +28,7 @@ def slope():
 
 def eggshell():
     # Periodic surface
-    case_filename = "x2_reducedv2_1mm_meshsize_00035"
+    case_filename = "x2_reducedv3_1mm_meshsize_0002"
 
     #Geometry
     x_ = 0.05 # Lenght
@@ -67,11 +67,11 @@ else:
 
 #############
 ## Path
-path_to_folder = "meshes/"
+path_to_folder = "data/"
 output_folder = "results/"
 
 # name of the project
-project_name = "test_3d_meshes"
+project_name = "results_3d_meshes"
 
 # Create dictionary for the boundaries
 boundary_tags = {'surface':1,'back':2,'bottom':3,'outlet':4,'top':5,'inlet':6}
